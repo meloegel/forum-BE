@@ -23,8 +23,11 @@ exports.up = function (knex) {
         .createTable('comments', tbl => {
             tbl.increments('id')
             tbl.string('comment')
+            tbl.string('photo')
+            tbl.string('video')
 
             tbl.integer('topicId').unsigned().notNullable().references('topics.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('userId').unsigned().notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
 };
 
