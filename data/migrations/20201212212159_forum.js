@@ -8,6 +8,8 @@ exports.up = function (knex) {
             tbl.string('avatar')
             tbl.string('location')
             tbl.string('email')
+            tbl.string('quote')
+            tbl.string('about')
         })
         .createTable('topics', tbl => {
             tbl.increments('id')
