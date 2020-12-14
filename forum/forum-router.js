@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Forum = require('./forum-model');
-const Users = require('../users/users-model');
 
 // Get all Topics //
 router.get('/', (req, res) => {
@@ -11,7 +10,7 @@ router.get('/', (req, res) => {
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ Error: 'Error getting list of topics' })
+            res.status(500).json({ Error: 'Error getting list of Topics' })
         })
 })
 
@@ -23,12 +22,12 @@ router.get('/topic/:id', (req, res) => {
             if (topic) {
                 res.status(200).json(topic)
             } else {
-                res.status(404).json({ Error: `Could not find topic with id: ${id}` })
+                res.status(404).json({ Error: `Could not find Topic with id: ${id}` })
             }
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ Error: `Error getting topic with id: ${id}` })
+            res.status(500).json({ Error: `Error getting Topic with id: ${id}` })
         })
 })
 
@@ -49,6 +48,22 @@ router.get('/topic/comments', (req, res) => {
         })
 })
 
+// Get a Users Topics //
+router.get('/user/:id/topics', (req, res) => {
+    const { id } = req.params;
+    Forum.getUserTopics(id)
+        .then(topics => {
+            if (topics) {
+                res.status(200).json(topics)
+            } else {
+                res.status(404).json({ Error: `Could not find Topics for user with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: `Error getting Topics for user with id: ${id}` })
+        })
+})
 
 // Add Topic //
 router.post('/', (req, res) => {
@@ -77,13 +92,59 @@ router.post('/comment', (req, res) => {
 })
 
 // Update Topic //
-
+router.put('/:id', (req, res) => {
+    const { id } = req.params
+    const changes = req.body
+    Forum.getTopic(id)
+        .then(topic => {
+            if (topic) {
+                Forum.updateTopic(changes, id)
+                    .then(updatedTopic => {
+                        res.status(200).json({ Message: `Updated Topic with id: ${id}` })
+                    })
+            } else {
+                res.status(404).json({ Error: `Could not find Topic with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: 'Failed to update Topic' })
+        })
+})
 
 // Delete Topic //
-
+router.delete('/:id', (req, res) => {
+    const { id } = req.params
+    Forum.deleteTopic(id)
+        .then(deleted => {
+            if (deleted) {
+                res.status(200).json({ Message: `Topic with id: ${id} has been deleted` })
+            } else {
+                res.status(404).json({ Error: `Could not find Topic with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: 'Error deleting Topic' })
+        })
+})
 
 // Delete Comment //
+router.delete('/comment/:id', (req, res) => {
+    const { id } = req.params
+    Forum.deleteComment(id)
+        .then(deleted => {
+            if (deleted) {
+                res.status(200).json({ Message: `Comment with id: ${id} has been deleted` })
+            } else {
+                res.status(404).json({ Error: `Could not find Comment with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: 'Error deleting Comment' })
+        })
+})
 
 
-
-// Get a Users Topics //
+module.exports = router;
