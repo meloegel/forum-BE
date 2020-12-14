@@ -18,7 +18,6 @@ exports.up = function (knex) {
             tbl.string('video')
             tbl.string('description').notNullable()
             tbl.timestamp('timePosted').notNullable().defaultTo(knex.fn.now());
-            tbl.integer('commentId').unsigned().notNullable().references('comments.id').onUpdate('CASCADE').onDelete('CASCADE')
             tbl.integer('userId').unsigned().notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
         .createTable('comments', tbl => {
