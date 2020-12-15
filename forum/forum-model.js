@@ -22,7 +22,6 @@ function getTopic(id) {
         .first()
 }
 
-// Need to test this endpoint //
 function getAllTopicComments(id) {
     return db('comments')
         .where({ 'comments.topicId': id })
@@ -55,7 +54,6 @@ function deleteComment(id) {
         .del()
 }
 
-// Need to test this endpoint //
 function getUserTopics(id) {
     return db('topics')
         .where({ 'topics.userId': id })

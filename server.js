@@ -15,8 +15,8 @@ server.use(cors())
 server.use(express.json())
 
 server.use('/api/auth', AuthRouter);
-server.use('/api/auth/users', UserRouter)
-server.use('/api/auth/forum', ForumRouter)
+server.use('/api/auth/users', restrictedMiddleware, UserRouter)
+server.use('/api/auth/forum', restrictedMiddleware, ForumRouter)
 
 server.get('/', (req, res) => {
     const message = process.env.MESSAGE

@@ -32,12 +32,12 @@ router.get('/topic/:id', (req, res) => {
 })
 
 // Get all Comments for Topic //
-router.get('/topic/comments', (req, res) => {
+router.get('/topic/:id/comments', (req, res) => {
     const { id } = req.params
     Forum.getAllTopicComments(id)
         .then(comments => {
             if (comments) {
-                res.status(200).json(topic)
+                res.status(200).json(comments)
             } else {
                 res.status(404).json({ Error: `Could not find Comments for Topic with id: ${id}` })
             }
