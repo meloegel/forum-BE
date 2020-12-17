@@ -33,7 +33,7 @@ function addTopic(topic) {
 }
 
 function addComment(comment) {
-    return db('comment').insert(comment, 'id')
+    return db('comments').insert(comment, 'id')
 }
 
 function updateTopic(changes, id) {
