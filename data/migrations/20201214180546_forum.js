@@ -18,21 +18,22 @@ exports.up = function (knex) {
             tbl.string('video')
             tbl.string('description').notNullable()
             tbl.timestamp('timePosted').notNullable().defaultTo(knex.fn.now());
-            tbl.integer('userId').unsigned().notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('userId').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
         .createTable('comments', tbl => {
             tbl.increments('id')
             tbl.string('comment')
             tbl.string('photo')
             tbl.string('video')
-            tbl.integer('topicId').unsigned().notNullable().references('topics.id').onUpdate('CASCADE').onDelete('CASCADE')
-            tbl.integer('userId').unsigned().notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('topicId').notNullable().references('topics.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('userId').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
 };
 
 exports.down = function (knex) {
     return knex.schema
-        .dropTableIfExists('users')
-        .dropTableIfExists('topics')
         .dropTableIfExists('comments')
+        .dropTableIfExists('topics')
+        .dropTableIfExists('users')
+
 };
