@@ -18,7 +18,7 @@ exports.up = function (knex) {
             tbl.string('video')
             tbl.string('description').notNullable()
             tbl.timestamp('timePosted').notNullable().defaultTo(knex.fn.now());
-            tbl.integer('userId').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('userIdTopic').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
         .createTable('comments', tbl => {
             tbl.increments('id')
@@ -26,7 +26,7 @@ exports.up = function (knex) {
             tbl.string('photo')
             tbl.string('video')
             tbl.integer('topicId').notNullable().references('topics.id').onUpdate('CASCADE').onDelete('CASCADE')
-            tbl.integer('userId').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
+            tbl.integer('userIdComment').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
 };
 
