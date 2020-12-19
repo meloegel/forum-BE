@@ -24,6 +24,8 @@ function getTopic(id) {
 
 function getAllTopicComments(id) {
     return db('comments')
+        .select('comments.id AS commentID', 'comments.comment', 'comments.photoComment',
+            'comments.videoComment', 'comments.userIdComment')
         .where({ 'comments.topicId': id })
         .join('topics', 'topics.id', 'comments.topicId').orderBy('comments.id')
 }
@@ -56,6 +58,8 @@ function deleteComment(id) {
 
 function getUserTopics(id) {
     return db('topics')
+        .select('topics.id AS topicID', 'topics.topic', 'topics.photoTopic',
+            'topics.videoTopic', 'topics.description', 'topics.timePosted', 'topics.userIdTopic')
         .where({ 'topics.userIdTopic': id })
         .join('users', 'users.id', 'topics.userIdTopic').orderBy('topics.id')
 }
