@@ -56,6 +56,6 @@ function deleteComment(id) {
 
 function getUserTopics(id) {
     return db('topics')
-        .where({ 'topics.userId': id })
-        .join('users', 'users.id', 'topics.userId').orderBy('topics.id')
+        .where({ 'topics.userIdTopic': id })
+        .join('users', 'users.id', 'topics.userIdTopic').orderBy('topics.id')
 }
