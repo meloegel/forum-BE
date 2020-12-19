@@ -41,7 +41,7 @@ function addComment(comment) {
 function updateTopic(changes, id) {
     return db('topics')
         .where({ id })
-        .updates(changes)
+        .update(changes)
 }
 
 function deleteTopic(id) {
