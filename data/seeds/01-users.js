@@ -1,4 +1,4 @@
-// Passwords asdasd // 
+// Passwords asdasd // // Passwords need to be hashed to login with seeds//
 exports.seed = function (knex, Promise) {
   return knex('users').insert([
     { id: 1, username: 'test', password: '$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG', location: 'Detroit, MI', email: 'email@email.com', avatar: 'https://img.etimg.com/thumb/msid-67536727,width-650,imgsize-779412,,resizemode-4,quality-100/running-shoes_gettyimages.jpg', quote: 'test', about: 'test' },
