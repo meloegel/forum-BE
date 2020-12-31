@@ -25,7 +25,7 @@ function getTopic(id) {
 function getAllTopicComments(id) {
     return db('comments')
         .select('comments.id AS commentID', 'comments.comment', 'comments.photoComment',
-            'comments.videoComment', 'comments.userIdComment')
+            'comments.videoComment', 'comments.userIdComment', 'comments.gif')
         .where({ 'comments.topicId': id })
         .join('topics', 'topics.id', 'comments.topicId').orderBy('comments.id')
 }

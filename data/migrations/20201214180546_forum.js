@@ -24,6 +24,7 @@ exports.up = function (knex) {
             tbl.string('comment')
             tbl.string('photoComment')
             tbl.string('videoComment')
+            tbl.string('gif')
             tbl.integer('topicId').notNullable().references('topics.id').onUpdate('CASCADE').onDelete('CASCADE')
             tbl.integer('userIdComment').notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })
