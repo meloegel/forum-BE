@@ -9,7 +9,6 @@ exports.up = function (knex) {
             tbl.string('location')
             tbl.string('email')
             tbl.string('quote')
-            tbl.string('about')
         })
         .createTable('topics', tbl => {
             tbl.increments('id')
@@ -35,5 +34,4 @@ exports.down = function (knex) {
         .dropTableIfExists('comments')
         .dropTableIfExists('topics')
         .dropTableIfExists('users')
-
 };
