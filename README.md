@@ -23,3 +23,8 @@ Front-End Deployment: <br>
 -PostgresSQL3<br>
 
 ## Endpoints
+
+| Request | URL                | Description            | Requires Token | Requires Account |
+| ------- | ------------------ | ---------------------- | -------------- | ---------------- |
+| POST    | /api/auth/register | register as a new user | -              | -                |
+| POST    | /api/auth/login    | login as existing user | -              | -                |
