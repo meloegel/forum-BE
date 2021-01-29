@@ -106,3 +106,166 @@ Returns:
 ```
 
 ### POST /api/auth/login
+
+Request Body:
+
+```
+{
+    "username": "BobbyBoucher",
+    "password": "asdasd",
+}
+```
+
+Returns:
+
+```
+{
+    "message": "Welcome",
+    "user": {
+        "id": 2,
+        "username": "BobbyBoucher",
+        "password": "$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG",
+        "avatar": "https://i1.sndcdn.com/artworks-000585482786-7cozwy-t500x500.jpg",
+        "location": "Detroit, MI",
+        "email": "email@email.com",
+        "quote": "H2O for Life!"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6IkJvYmJ5Qm91Y2hlciIsImlhdCI6MTYxMTg3NzEwNCwiZXhwIjoxNjEyNzQxMTA0fQ.kYONAl-yciTgBAdHx95OEUype9qpgYl-lkzddZWECs8"
+}
+
+```
+
+### GET /api/auth/users/
+
+Returns:
+
+```
+[
+    {
+        "id": 1,
+        "username": "ForumPoster",
+        "password": "$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG",
+        "avatar": "https://upload.wikimedia.org/wikipedia/en/9/9a/Trollface_non-free.png",
+        "location": "Detroit, MI",
+        "email": "email@email.com",
+        "quote": "I love posting random shit!"
+    },
+    {
+        "id": 2,
+        "username": "BobbyBoucher",
+        "password": "$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG",
+        "avatar": "https://i1.sndcdn.com/artworks-000585482786-7cozwy-t500x500.jpg",
+        "location": "Detroit, MI",
+        "email": "email@email.com",
+        "quote": "H2O for Life!"
+    },
+    ....
+```
+
+### GET /api/auth/users/:id
+
+Returns:
+
+```
+{
+    "id": 2,
+    "username": "BobbyBoucher",
+    "password": "$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG",
+    "avatar": "https://i1.sndcdn.com/artworks-000585482786-7cozwy-t500x500.jpg",
+    "location": "Detroit, MI",
+    "email": "email@email.com",
+    "quote": "H2O for Life!"
+}
+```
+
+### PUT /api/auth/users/:id
+
+Request Body:
+
+```
+{
+    "id": 2,
+    "username": "BobbyBoucher",
+    "password": "$2a$10$X4HNtDPHV3dhucUGlPYE8ONefcIzt8tX2GV3H0P/.oogb78S.X3yG",
+    "avatar": "https://i1.sndcdn.com/artworks-000585482786-7cozwy-t500x500.jpg",
+    "location": "Detroit, MI",
+    "email": "email@email.com",
+    "quote": "H2O for Life!"
+}
+```
+
+Returns:
+
+```
+{
+    "Message": "Updated user with is: 2",
+    "updatedUser": 1
+}
+```
+
+### DELETE /api/auth/users/:id
+
+Returns:
+
+```
+{
+    "Message": "User with id: 4 has been deleted"
+}
+```
+
+### GET /api/auth/forum/
+
+Returns:
+
+```
+[
+    {
+        "id": 1,
+        "topic": "Why is the sky blue",
+        "photoTopic": "https://eus-www.sway-cdn.com/s/lS9lnvgYelIJHUrK/images/Q-RqK_GAjZjzbG?quality=960&allowAnimation=false",
+        "videoTopic": null,
+        "description": "Wondering why the sky is blue",
+        "timePosted": "2021-01-14 20:27:31",
+        "userIdTopic": 1
+    },
+    {
+        "id": 2,
+        "topic": "Test topic",
+        "photoTopic": null,
+        "videoTopic": "https://www.youtube.com/watch?v=8hkY31-muFo",
+        "description": "Good album",
+        "timePosted": "2021-01-14 20:27:31",
+        "userIdTopic": 1
+    },
+    ...
+```
+
+### GET /api/auth/forum/topic/:id
+
+Returns:
+
+```
+{
+    "id": 1,
+    "topic": "Why is the sky blue",
+    "photoTopic": "https://eus-www.sway-cdn.com/s/lS9lnvgYelIJHUrK/images/Q-RqK_GAjZjzbG?quality=960&allowAnimation=false",
+    "videoTopic": null,
+    "description": "Wondering why the sky is blue",
+    "timePosted": "2021-01-14 20:27:31",
+    "userIdTopic": 1
+}
+```
+
+### GET /api/auth/forum/topic/:id/comments
+
+### GET /api/auth/forum/user/:id/topics
+
+### POST /api/auth/forum/
+
+### POST /api/auth/forum/comment
+
+### PUT /api/auth/forum/:id
+
+### DELETE /api/auth/forum/:id
+
+### DELETE /api/auth/forum/comment/:id
