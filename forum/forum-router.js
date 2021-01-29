@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     const newTopic = req.body
     Forum.addTopic(newTopic)
         .then(topic => {
-            res.status(201).json({ Posed: newTopic })
+            res.status(201).json({ Posted: newTopic })
         })
         .catch(error => {
             console.log(error)

@@ -258,14 +258,147 @@ Returns:
 
 ### GET /api/auth/forum/topic/:id/comments
 
+Returns:
+
+```
+[
+    {
+        "commentID": 6,
+        "comment": "NOICE!",
+        "photoComment": null,
+        "videoComment": null,
+        "userIdComment": 1,
+        "gif": null
+    },
+    ...
+```
+
 ### GET /api/auth/forum/user/:id/topics
+
+Returns:
+
+```
+[
+    {
+        "topicID": 1,
+        "topic": "Why is the sky blue",
+        "photoTopic": "https://eus-www.sway-cdn.com/s/lS9lnvgYelIJHUrK/images/Q-RqK_GAjZjzbG?quality=960&allowAnimation=false",
+        "videoTopic": null,
+        "description": "Wondering why the sky is blue",
+        "timePosted": "2021-01-14 20:27:31",
+        "userIdTopic": 1
+    },
+    {
+        "topicID": 2,
+        "topic": "Test topic",
+        "photoTopic": null,
+        "videoTopic": "https://www.youtube.com/watch?v=8hkY31-muFo",
+        "description": "Good album",
+        "timePosted": "2021-01-14 20:27:31",
+        "userIdTopic": 1
+    }
+```
 
 ### POST /api/auth/forum/
 
+Request Body:
+
+```
+  {
+        "topic": "Test topic 3",
+        "photoTopic": null,
+        "videoTopic": null,
+        "description": "Test",
+        "timePosted": "2021-01-28 20:27:31",
+        "userIdTopic": 1
+    }
+```
+
+Returns:
+
+```
+{
+    "Posted": {
+        "topic": "Test topic 3",
+        "photoTopic": null,
+        "videoTopic": null,
+        "description": "Test",
+        "timePosted": "2021-01-28 20:27:31",
+        "userIdTopic": 1
+    }
+}
+```
+
 ### POST /api/auth/forum/comment
+
+Request Body:
+
+```
+{
+        "topicId": 1,
+        "comment": "test!",
+        "photoComment": null,
+        "videoComment": null,
+        "userIdComment": 1,
+        "gif": null
+}
+```
+
+Returns:
+
+```
+{
+    "Posted": {
+        "topicId": 1,
+        "comment": "test!",
+        "photoComment": null,
+        "videoComment": null,
+        "userIdComment": 1,
+        "gif": null
+    }
+}
+```
 
 ### PUT /api/auth/forum/:id
 
+Request Body:
+
+```
+{
+        "id": 13,
+        "topic": "Update Test topic 3",
+        "photoTopic": null,
+        "videoTopic": null,
+        "description": "Test",
+        "timePosted": "2021-01-28 20:27:31",
+        "userIdTopic": 1
+}
+```
+
+Returns:
+
+```
+{
+    "Message": "Updated Topic with id: 13"
+}
+```
+
 ### DELETE /api/auth/forum/:id
 
+Returns:
+
+```
+{
+    "Message": "Topic with id: 13 has been deleted"
+}
+```
+
 ### DELETE /api/auth/forum/comment/:id
+
+Returns:
+
+```
+{
+    "Message": "Comment with id: 19 has been deleted"
+}
+```
