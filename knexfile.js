@@ -1,5 +1,12 @@
 const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/api/auth"
+const { Pool } = require('pg');
 
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 module.exports = {
 
   development: {
@@ -36,7 +43,9 @@ module.exports = {
   production: {
     client: 'pg',
     connection: pgConnection,
-    ssl: { rejectUnauthorized: false },
+    pool: {
+      pool
+    },
     migrations: {
       directory: './data/migrations'
     },
