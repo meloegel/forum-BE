@@ -43,9 +43,7 @@ module.exports = {
   production: {
     client: 'pg',
     connection: pgConnection,
-    pool: {
-      pool
-    },
+    pool,
     migrations: {
       directory: './data/migrations'
     },
