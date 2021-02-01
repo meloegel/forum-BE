@@ -1,5 +1,6 @@
 const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/api/auth"
-
+var pg = require('pg');
+pg.defaults.ssl = true;
 
 module.exports = {
 
