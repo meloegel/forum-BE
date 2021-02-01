@@ -1,4 +1,13 @@
-const knex = require("knex");
+const knex = require('knex')({
+    client: 'pg',
+    connection: {
+        host: '127.0.0.1',
+        user: 'loegel',
+        password: 'password',
+        database: 'forum-be'
+    },
+    pool: { min: 0, max: 7 }
+});
 
 const config = require("../knexfile.js");
 
