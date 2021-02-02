@@ -7,6 +7,10 @@ const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhos
 //     rejectUnauthorized: false
 //   }
 // });
+const pg = require('pg')
+pg.defaults.ssl = {
+  rejectUnauthorized: false,
+}
 module.exports = {
 
   development: {
@@ -43,7 +47,9 @@ module.exports = {
   production: {
     client: 'pg',
     connection: pgConnection,
-    ssl: true,
+    ssl: {
+      rejectUnauthorized: false
+    },
     pool: {
       min: 2,
       max: 10
