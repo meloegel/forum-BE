@@ -15,6 +15,7 @@ exports.up = function (knex) {
             tbl.string('topic').notNullable()
             tbl.string('photoTopic')
             tbl.string('videoTopic')
+            tbl.string('link')
             tbl.boolean('nsfw')
             tbl.string('description').notNullable()
             tbl.timestamp('timePosted').notNullable().defaultTo(knex.fn.now());
