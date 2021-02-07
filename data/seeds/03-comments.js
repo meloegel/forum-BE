@@ -6,7 +6,7 @@ exports.seed = function (knex) {
     { id: 3, comment: 'Other comment', videoComment: 'https://www.youtube.com/watch?v=gpyB54lSpYg', topicId: '3', userIdComment: 1 },
     { id: 4, comment: 'Yet another test comment', topicId: 3, userIdComment: 1 },
     { id: 5, comment: 'Sick bro', topicId: 2, userIdComment: 1 },
-    { id: 6, comment: 'NOICE!', topicId: 1, userIdComment: 1 },
+    { id: 6, comment: 'NOICE!', topicId: 2, userIdComment: 1 },
     { id: 7, comment: 'Awwwwwwww YAHHHHHH', gif: 'https://media.giphy.com/media/xYqKJsgR6qZFK/giphy.gif', topicId: 4, userIdComment: 1 },
     { id: 8, comment: 'This topic is thicccccccccc', gif: 'https://media.giphy.com/media/xEqOCqgifLJBu/giphy.gif', topicId: 4, userIdComment: 2 },
     { id: 9, comment: 'Damn boi this topic is thiccccc', videoComment: 'https://www.youtube.com/watch?v=37-9yPnL9aY', topicId: 4, userIdComment: 3 },
