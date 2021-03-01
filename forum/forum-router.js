@@ -31,6 +31,19 @@ router.get('/topic/:id', (req, res) => {
         })
 })
 
+// Get all Comments //
+router.get('/comments', (req, res) => {
+    Forum.getAllComments()
+        .then(comments => {
+            res.status(200).json(comments)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: 'Error getting list of Comments' })
+        })
+})
+
+
 // Get all Comments for Topic //
 router.get('/topic/:id/comments', (req, res) => {
     const { id } = req.params
