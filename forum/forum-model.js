@@ -3,6 +3,7 @@ const db = require('../data/db-config')
 module.exports = {
     getAllTopics,
     getTopic,
+    getAllComments,
     getAllTopicComments,
     addTopic,
     addComment,
@@ -20,6 +21,10 @@ function getTopic(id) {
     return db('topics')
         .where({ id })
         .first()
+}
+
+function getAllComments() {
+    return db('comments')
 }
 
 function getAllTopicComments(id) {
@@ -59,7 +64,7 @@ function deleteComment(id) {
 function getUserTopics(id) {
     return db('topics')
         .select('topics.id AS topicID', 'topics.topic', 'topics.photoTopic',
-            'topics.videoTopic', 'topics.description', 'topics.timePosted', 'topics.userIdTopic')
+            'topics.videoTopic', 'topics.description', 'topics.timePosted', 'topics.userIdTopic', 'topics.link')
         .where({ 'topics.userIdTopic': id })
         .join('users', 'users.id', 'topics.userIdTopic').orderBy('topics.id')
 }
